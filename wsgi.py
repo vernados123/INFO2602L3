@@ -11,12 +11,11 @@ db.init_app(app)
 def initialize():
   db.drop_all()
   db.create_all()
-  pam = Admin('1123', 'pam', 'pam@mail.com', 'pampass')
+ 
   bob = RegularUser('bob', 'bob@mail.com', 'bobpass')
   rick = RegularUser('rick', 'rick@mail.com', 'rickpass')
   sally = RegularUser('sally', 'sally@mail.com', 'sallypass')
-  db.session.add_all([bob, rick,
-                      sally, pam])  #add all can save multiple objects at once
+  db.session.add_all([bob, rick, sally])  #add all can save multiple objects at once
   db.session.commit()
   #load todo data from csv file
   with open('todos.csv') as file:
